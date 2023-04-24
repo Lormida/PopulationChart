@@ -1,0 +1,18 @@
+:root {
+  --opacity: 1;
+  --primary: 24, 95, 225;
+  --secondary: 0, 43, 78;
+  --helper-blue-one: 207, 59, 24;
+  --helper-blue-two: 96, 125, 148;
+  --helper-blue-three: 201, 220, 236;
+  --c-black: 41, 45, 51;
+  --c-white: 240, 249, 255;
+  --c-grey: 148, 151, 161;
+  --c-background: 241, 246, 250;
+  --tertiary: 240, 249, 255;
+  --c-red: 193, 64, 64;
+  --light: #d8dbe0;
+  --dark: #28292c;
+  --link: rgb(27, 129, 112);
+  --link-hover: rgb(24, 94, 82);
+}

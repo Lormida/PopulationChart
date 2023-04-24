@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "customConditions": ["dev"],
+    "allowJs": true,
+    "types": ["vite/client", "@vue-macros/reactivity-transform/macros-global", "unplugin-vue-macros/macros-global"],
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "vueCompilerOptions": {
+    "plugins": [
+      "@vue-macros/volar/define-options",
+      "@vue-macros/volar/define-models",
+      "@vue-macros/volar/define-props",
+      "@vue-macros/volar/define-props-refs",
+      "@vue-macros/volar/short-vmodel",
+      "@vue-macros/volar/define-slots",
+      "@vue-macros/volar/export-props"
+    ],
+    "shortVmodel": {
+      "prefix": "$"
+    },
+    "experimentalDefinePropProposal": "kevinEdition"
+  },
+  "include": ["src", "*", "../../packages/shim.d.ts"]
+}

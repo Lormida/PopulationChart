@@ -1,0 +1,26 @@
+@import './palette.css';
+@import './variables.css';
+
+#app {
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+}
+
+#app,
+html,
+body {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  font-weight: 400;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+}
