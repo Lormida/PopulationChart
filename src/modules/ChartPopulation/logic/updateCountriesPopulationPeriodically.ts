@@ -1,4 +1,4 @@
-import { useChartPopulationStore } from '../store'
+import { Store } from '../store/vuex/state'
 import { IPropsChartPopulationRow } from '../types/propsChartPopulationRow.type'
 import { loadDataByCountriesByNextYear } from './loadDataByCountriesByNextYear'
 
@@ -8,7 +8,7 @@ export async function updateCountriesPopulationPeriodically({
   updateCurrentYear,
   howOftenMillisecond,
 }: {
-  chartPopulationStore: ReturnType<typeof useChartPopulationStore>
+  chartPopulationStore: Store
   updateDataCountries: (newDataCountries: IPropsChartPopulationRow[]) => void
   updateCurrentYear: (currentYear: number) => void
   howOftenMillisecond: number
@@ -20,9 +20,9 @@ export async function updateCountriesPopulationPeriodically({
     increaseCurrentYear: (currentYear: number) => currentYear + 1,
     decreaseCurrentYear: (currentYear: number) => currentYear - 1,
     changeCurrentYear: (currentYear: number) => currentYear + 1,
-    currentYear: chartPopulationStore.getStartYear,
-    startYear: chartPopulationStore.getStartYear,
-    lastYear: chartPopulationStore.getLastYear,
+    currentYear: chartPopulationStore.getters.getStartYear,
+    startYear: chartPopulationStore.getters.getStartYear,
+    lastYear: chartPopulationStore.getters.getLastYear,
     howOftenMillisecond,
   })
 }

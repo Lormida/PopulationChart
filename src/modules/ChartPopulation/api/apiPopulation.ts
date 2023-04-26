@@ -5,7 +5,7 @@ import { useVFetch } from '~/shared/composables/network'
 import { GlobalConstants } from '~/shared/constants'
 import { IDataCountry, IDataByCountryCodeAndYear } from '../types'
 
-class _ApiPopulation {
+export class _ApiPopulation {
   apiConfig: AxiosInstance
   loadAllCountries: TNetworkRequest<IDataCountry[]>
   loadAllYears: TNetworkRequest<{ year: number }[]>

@@ -14,7 +14,7 @@ function updateCurrentYear(newCurrentYear: number) {
 <template>
   <TemplateChartPopulation>
     <template #chart-population-header>
-      <MoleculeChartPopulationHeader v-if="currentYear" :current-year="currentYear" />
+      <MoleculeChartPopulationHeader :current-year="currentYear" />
     </template>
 
     <template #chart-population-body>
