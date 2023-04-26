@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { IResponseError } from '~/shared/types'
-import { ApiPopulation } from '../api'
-import { IDataCountry, IDataByCountryCodeAndYear } from '../types'
+import { ApiPopulation } from '../../api'
+import { IDataCountry, IDataByCountryCodeAndYear } from '../../types'
 
 export const useChartPopulationStore = defineStore('chart-population', {
   state: () => ({
@@ -65,7 +65,7 @@ export const useChartPopulationStore = defineStore('chart-population', {
       // 2. Load all years data
       await this.loadYearsData()
     },
-    async getDataByCountriesByYear({ countryCodes, year }: { countryCodes: string[]; year: number }) {
+    async loadDataByCountriesByYear({ countryCodes, year }: { countryCodes: string[]; year: number }) {
       try {
         const response = await Promise.all(
           countryCodes.map((countryCode) =>

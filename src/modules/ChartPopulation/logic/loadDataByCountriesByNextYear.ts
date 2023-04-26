@@ -1,4 +1,4 @@
-import { useChartPopulationStore } from '../store'
+import { useChartPopulationStore } from '../store/pinia'
 import { IPropsChartPopulationRow } from '../types'
 import { reflectDataCountries } from './reflectDataCountries'
 
@@ -31,7 +31,7 @@ export async function loadDataByCountriesByNextYear({
   const selectedCountryCodes = chartPopulationStore.getSelectedCountriesCodes
 
   // 2. Get population information about these countries by current year
-  const updatedDataByCountriesByYear = await chartPopulationStore.getDataByCountriesByYear({
+  const updatedDataByCountriesByYear = await chartPopulationStore.loadDataByCountriesByYear({
     countryCodes: selectedCountryCodes,
     year: currentYear,
   })

@@ -1,6 +1,7 @@
-import { useChartPopulationStore } from '../store'
+import { isReactive } from 'vue'
+import { useChartPopulationStore } from '../store/pinia'
 
-export async function initPopulationStore(
+export async function initializePopulationStore(
   chartPopulationStore: ReturnType<typeof useChartPopulationStore>,
   amount: number
 ) {
