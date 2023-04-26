@@ -1,4 +1,5 @@
-import { useChartPopulationStore } from '../store'
+import { ActionTypes } from '../store/vuex/actions'
+import { Store } from '../store/vuex/state'
 import { IPropsChartPopulationRow } from '../types'
 import { reflectDataCountries } from './reflectDataCountries'
 
@@ -15,7 +16,7 @@ export async function loadDataByCountriesByNextYear({
   howOftenMillisecond,
   timerId,
 }: {
-  chartPopulationStore: ReturnType<typeof useChartPopulationStore>
+  chartPopulationStore: Store
   updateDataCountries: (newDataCountries: IPropsChartPopulationRow[]) => void
   updateCurrentYear: (currentYear: number) => void
   increaseCurrentYear: (currentYear: number) => number
@@ -28,13 +29,15 @@ export async function loadDataByCountriesByNextYear({
   timerId?: NodeJS.Timeout
 }) {
   // 1. Get list of countries that should be reflected in the chart
-  const selectedCountryCodes = chartPopulationStore.getSelectedCountriesCodes
+  const selectedCountryCodes = chartPopulationStore.getters.getSelectedCountriesCodes
 
   // 2. Get population information about these countries by current year
-  const updatedDataByCountriesByYear = await chartPopulationStore.getDataByCountriesByYear({
+  await chartPopulationStore.dispatch(ActionTypes.LOAD_DATA_BY_COUNTRIES_BY_YEAR, {
     countryCodes: selectedCountryCodes,
     year: currentYear,
   })
+
+  const updatedDataByCountriesByYear = chartPopulationStore.getters.getDataByCountryCodeAndYear
 
   // 3. Reflect (draw) these data in chart
   reflectDataCountries(updateDataCountries, updatedDataByCountriesByYear)

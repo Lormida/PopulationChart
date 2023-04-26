@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { MoleculeChartPopulationBodyRow } from '../molecules'
 import { Ref, ref } from 'vue'
-import { useChartPopulationStore } from '~/modules/ChartPopulation/store'
-import { initPopulationStore, updateCountriesPopulationPeriodically } from '~/modules/ChartPopulation/composables'
 import { AMOUNT_COUNTRIES, INTERVAL_MILLISECOND_REQUEST } from '~/modules/ChartPopulation/constants'
 import { IPropsChartPopulationRow } from '~/modules/ChartPopulation/types'
+import { useStore } from '../../../store/vuex'
+import { initializePopulationStore, updateCountriesPopulationPeriodically } from '~/modules/ChartPopulation/logic'
 
-const chartPopulationStore = useChartPopulationStore()
+const chartPopulationStore = useStore()
 const dataCountries = ref<IPropsChartPopulationRow[]>() as Ref<IPropsChartPopulationRow[]>
 const emit = defineEmits<{
   (e: 'update:currentYear', value: number): void
@@ -22,8 +22,8 @@ function updateCurrentYear(dataCountries: Ref<IPropsChartPopulationRow[]>) {
   }
 }
 
-async function runChart() {
-  await initPopulationStore(chartPopulationStore, AMOUNT_COUNTRIES)
+async function runChartLogic() {
+  await initializePopulationStore(chartPopulationStore, AMOUNT_COUNTRIES)
 
   updateCountriesPopulationPeriodically({
     updateDataCountries: updateCurrentYear(dataCountries),
@@ -33,7 +33,7 @@ async function runChart() {
   })
 }
 
-runChart()
+runChartLogic()
 </script>
 
 <template>
