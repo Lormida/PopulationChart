@@ -1,4 +1,4 @@
-import { useChartPopulationStore } from '../store'
+import { useChartPopulationStore } from '../store/pinia'
 import { IPropsChartPopulationRow } from '../types/propsChartPopulationRow.type'
 import { loadDataByCountriesByNextYear } from './loadDataByCountriesByNextYear'
 

@@ -1,6 +1,7 @@
-import { useChartPopulationStore } from '../store'
+import { isReactive } from 'vue'
+import { useChartPopulationStore } from '../store/pinia'
 
-export async function initPopulationStore(
+export async function initializePopulationStore(
   chartPopulationStore: ReturnType<typeof useChartPopulationStore>,
   amount: number
 ) {
@@ -11,7 +12,7 @@ export async function initPopulationStore(
   const countriesData = chartPopulationStore.getAllCountriesData({ amount })
 
   // 3. Select these countries and save their countries codes
-  chartPopulationStore.selectCountriesCode(countriesData.map((countryData) => countryData.countryCode))
+  chartPopulationStore.selectCountriesCode(countriesData.value.map((countryData) => countryData.countryCode))
 
   return chartPopulationStore
 }

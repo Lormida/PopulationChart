@@ -5,15 +5,19 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div :style="{ width: `${contentData}%` }" class="content"></div>
+  <div class="chart-population-body-row__content" :style="{ width: `${props.contentData}%` }"></div>
 </template>
 
 <style lang="scss" scoped>
-.content {
-  transition: width 1s ease-in-out;
-  height: 30px;
-  color: orange;
-  padding: 10px;
-  background-color: var(--zinc-900);
+.chart-population-body-row {
+  // .chart-population-body-row__content
+
+  &__content {
+    transition: width 1s ease-in-out;
+    height: 30px;
+    color: orange;
+    padding: 10px;
+    background-color: var(--zinc-900);
+  }
 }
 </style>

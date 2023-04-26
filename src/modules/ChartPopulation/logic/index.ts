@@ -1,2 +1,2 @@
-export * from './initPopulationStore'
+export * from './initializePopulationStore'
 export * from './updateCountriesPopulationPeriodically'
